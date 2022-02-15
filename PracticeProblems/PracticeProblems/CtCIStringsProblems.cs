@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PracticeProblems
 {
-    internal class StringsProblems
+    internal class CtCIStringsProblems
     {
         internal bool HasUniqueCharacters(string input)
         {

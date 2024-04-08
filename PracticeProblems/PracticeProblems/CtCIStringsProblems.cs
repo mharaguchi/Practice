@@ -197,5 +197,25 @@ namespace PracticeProblems
                 return compressedString;
             }
         }
+
+        /* 14 - Longest Common Prefix */
+        internal string LongestCommonPrefix(string[] strs)
+        {
+            var shortestLength = strs.Min(x => x.Length);
+            var sb = new StringBuilder();
+            for (int i = 0; i < shortestLength; i++)
+            {
+                char thisChar = strs[0][i];
+                for (int j = 0; j < strs.Length; j++)
+                {
+                    if (strs[j][i] != thisChar)
+                    {
+                        return sb.ToString();
+                    }
+                }
+                sb.Append(thisChar);
+            }
+            return sb.ToString();
+        }
     }
 }

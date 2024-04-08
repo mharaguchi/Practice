@@ -110,5 +110,26 @@ namespace PracticeProblems
 
             return false;
         }
+
+        /* 575 - Distribute Candies */
+        public int DistributeCandies(int[] candyType)
+        {
+            var candyTypes = GetCandyTypeCount(candyType);
+            var max = candyType.Length / 2;
+            if (max > candyTypes)
+            {
+                return candyTypes;
+            }
+            else
+            {
+                return max;
+            }
+        }
+
+        private int GetCandyTypeCount(int[] candyType)
+        {
+            var candyTypes = new HashSet<int>(candyType);
+            return candyTypes.Count();
+        }
     }
 }

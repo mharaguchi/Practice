@@ -217,5 +217,52 @@ namespace PracticeProblems
             }
             return sb.ToString();
         }
+
+        /* 20 - Valid Parentheses */
+        internal bool IsValid(string s)
+        {
+            var stack = new Stack<char>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(')
+                {
+                    stack.Push('(');
+                }
+                else if (s[i] == '{')
+                {
+                    stack.Push('{');
+                }
+                else if (s[i] == '[')
+                {
+                    stack.Push('[');
+                }
+                else if (s[i] == ')')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '(')
+                    {
+                        return false;
+                    }
+                }
+                else if (s[i] == '}')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '{')
+                    {
+                        return false;
+                    }
+                }
+                else if (s[i] == ']')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '[')
+                    {
+                        return false;
+                    }
+                }
+            }
+            if (stack.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

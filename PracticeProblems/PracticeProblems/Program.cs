@@ -13,6 +13,12 @@ var result = stringsProblems.LongestCommonPrefix(strs);
 Console.WriteLine("Result:");
 Console.WriteLine(result.ToString());
 
+
+var intProblems = new IntProblems();
+var intInput = 1994;
+var intOutput = intProblems.IntToRoman(intInput);
+Console.WriteLine("IntOutput: " + intOutput);
+
 /* Median of 2 sorted arrays */
 //var leet = new LeetMedianOfTwoSortedArrays_4();
 //var nums1 = new int[] { 1 };

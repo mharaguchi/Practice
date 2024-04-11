@@ -19,6 +19,11 @@ var intInput = 1994;
 var intOutput = intProblems.IntToRoman(intInput);
 Console.WriteLine("IntOutput: " + intOutput);
 
+var arrayProblems = new ArrayProblems();
+var arrayInput = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+var arrayOutput = arrayProblems.MaxArea(arrayInput);
+Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
+
 /* Median of 2 sorted arrays */
 //var leet = new LeetMedianOfTwoSortedArrays_4();
 //var nums1 = new int[] { 1 };

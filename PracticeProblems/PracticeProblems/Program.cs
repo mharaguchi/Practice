@@ -20,8 +20,13 @@ var intOutput = intProblems.IntToRoman(intInput);
 Console.WriteLine("IntOutput: " + intOutput);
 
 var arrayProblems = new ArrayProblems();
-var arrayInput = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
-var arrayOutput = arrayProblems.MaxArea(arrayInput);
+//var arrayInput = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+var arrayInput = new int[] { -1, 0, 1, 2, -1, -4 };
+//var arrayInput = new int[] { 0, 0, 0 };
+//var arrayInput = new int[] { 0, 1, 1 };
+//var arrayInput = new int[] { 1, -1, -1, 0 };
+
+var arrayOutput = arrayProblems.ThreeSum(arrayInput);
 Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
 /* Median of 2 sorted arrays */

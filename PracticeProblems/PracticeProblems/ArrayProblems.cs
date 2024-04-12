@@ -73,7 +73,11 @@
                         right--;
                     }
                 }
-                current++;
+                int prevNum = nums[current];
+                while (current < nums.Length - 2 && nums[current] == prevNum)
+                {
+                    current++;
+                }
             }
             return matches;
         }

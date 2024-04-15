@@ -81,5 +81,43 @@
             }
             return matches;
         }
+
+        /* 46 - Permutations */
+        public IList<IList<int>> Permute(int[] nums)
+        {
+            var permutations = new List<IList<int>>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                var used = new HashSet<int>();
+                var thisPermutation = new List<int>
+                {
+                    nums[i]
+                };
+                used.Add(i);
+                BacktrackPermutations(permutations, thisPermutation, nums, used);
+            }
+
+            return permutations;
+        }
+
+        public void BacktrackPermutations(List<IList<int>> permutations, List<int> thisPermutation, int[] nums, HashSet<int> used)
+        {
+            if (thisPermutation.Count == nums.Length)
+            {
+                permutations.Add(new List<int>(thisPermutation));
+                return;
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!used.Contains(i))
+                {
+                    thisPermutation.Add(nums[i]);
+                    used.Add(i);
+                    BacktrackPermutations(permutations, thisPermutation, nums, used);
+                    thisPermutation.RemoveAt(thisPermutation.Count - 1);
+                    used.Remove(i);
+                }
+            }
+        }
     }
 }

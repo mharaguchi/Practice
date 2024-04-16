@@ -123,36 +123,16 @@
         /* 120 - Triangle */
         public int MinimumTotal(IList<IList<int>> triangle)
         {
-            return BacktrackTotal(triangle, 0, 0, 0, Int32.MaxValue);
-        }
-
-        public int BacktrackTotal(IList<IList<int>> triangle, int depth, int index, int totalSoFar, int currentMin)
-        {
-            var thisRow = triangle[depth];
-            var thisVal = thisRow[index];
-            var thisTotal = totalSoFar + thisVal;
-            if (depth == triangle.Count - 1)
+            var lastRow = triangle[triangle.Count - 1];
+            for(int i = 0; i < triangle.Count - 2; i--)
             {
-                if (currentMin > thisTotal)
+                for(int j = 0; j < triangle[i].Count; j++)
                 {
-                    return thisTotal;
+                    lastRow[j] = Math.Min(lastRow[j], lastRow[j + 1]) + triangle[i][j];
                 }
             }
-            else
-            {
-                var left = BacktrackTotal(triangle, depth + 1, index, thisTotal, currentMin);
-                if (left < currentMin)
-                {
-                    currentMin = left;
-                }
-                var right = BacktrackTotal(triangle, depth + 1, index + 1, thisTotal, currentMin);
-                if (right < currentMin)
-                {
-                    currentMin = right;
-                }
-            }
-
-            return currentMin;
+            
+            return lastRow[0];
         }
     }
 }

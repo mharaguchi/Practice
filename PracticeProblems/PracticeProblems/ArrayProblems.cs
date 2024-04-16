@@ -119,5 +119,40 @@
                 }
             }
         }
+
+        /* 120 - Triangle */
+        public int MinimumTotal(IList<IList<int>> triangle)
+        {
+            return BacktrackTotal(triangle, 0, 0, 0, Int32.MaxValue);
+        }
+
+        public int BacktrackTotal(IList<IList<int>> triangle, int depth, int index, int totalSoFar, int currentMin)
+        {
+            var thisRow = triangle[depth];
+            var thisVal = thisRow[index];
+            var thisTotal = totalSoFar + thisVal;
+            if (depth == triangle.Count - 1)
+            {
+                if (currentMin > thisTotal)
+                {
+                    return thisTotal;
+                }
+            }
+            else
+            {
+                var left = BacktrackTotal(triangle, depth + 1, index, thisTotal, currentMin);
+                if (left < currentMin)
+                {
+                    currentMin = left;
+                }
+                var right = BacktrackTotal(triangle, depth + 1, index + 1, thisTotal, currentMin);
+                if (right < currentMin)
+                {
+                    currentMin = right;
+                }
+            }
+
+            return currentMin;
+        }
     }
 }

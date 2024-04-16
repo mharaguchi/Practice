@@ -24,10 +24,14 @@ var arrayProblems = new ArrayProblems();
 //var arrayInput = new int[] { -1, 0, 1, 2, -1, -4 };
 //var arrayInput = new int[] { 0, 0, 0 };
 //var arrayInput = new int[] { 0, 1, 1 };
-var arrayInput = new int[] { 1, 2, 3 };
+//var arrayInput = new int[] { 1, 2, 3 };
+//var arrayInput = new List<IList<int>> { new List<int> { 2 }, new List<int> { 3, 4 }, new List<int> { 6, 5, 7 }, new List<int> { 4, 1, 8, 3 } };
+//var arrayInput = new List<IList<int>> { new List<int>{ -1 }, new List<int>{ -2, -3 }};
+var arrayInput = new List<IList<int>> { new List<int> { -1 }, new List<int> { 2, 3 }, new List<int> { 1, -1, -3 } };
 //var arrayInput = new int[] { 1, -1, -1, 0 };
 
-var arrayOutput = arrayProblems.Permute(arrayInput);
+//var arrayOutput = arrayProblems.Permute(arrayInput);
+var arrayOutput = arrayProblems.MinimumTotal(arrayInput);
 Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
 /* Median of 2 sorted arrays */

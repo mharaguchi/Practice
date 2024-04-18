@@ -134,5 +134,27 @@
             
             return lastRow[0];
         }
+
+        /* 55 - Jump Game */
+        public bool CanJump(int[] nums)
+        {
+            var score = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                score--;
+                if (score < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (nums[i] > score)
+                    {
+                        score = nums[i];
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

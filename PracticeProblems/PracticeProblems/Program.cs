@@ -29,12 +29,23 @@ var arrayProblems = new ArrayProblems();
 //var arrayInput = new List<IList<int>> { new List<int>{ -1 }, new List<int>{ -2, -3 }};
 //var arrayInput = new List<IList<int>> { new List<int> { -1 }, new List<int> { 2, 3 }, new List<int> { 1, -1, -3 } };
 //var arrayInput = new int[] { 1, -1, -1, 0 };
-var arrayInput = new int[] { 2, 3, 1, 1, 4 };
+//var arrayInput = new int[] { 2, 3, 1, 1, 4 };
 //var arrayInput = new int[] { 3, 2, 1, 0, 4 };
+var arrayInput = new List<char[]> { 
+    new char[] { '5', '3', '.', '.', '7', '.', '.', '.', '.' }, 
+    new char[] { '6','.','.','1','9','5','.','.','.' }, 
+    new char[] { '.','9','8','.','.','.','.','6','.' },
+    new char[] { '8','.','.','.','6','.','.','.','3' },
+    new char[] { '4','.','.','8','.','3','.','.','1' },
+    new char[] { '7','.','.','.','2','.','.','.','6' },
+    new char[] { '.','6','.','.','.','.','2','8','.' },
+    new char[] { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+    new char[] { '.','.','.','.','8','.','.','7','9' },
+}.ToArray();
 
 
 //var arrayOutput = arrayProblems.Permute(arrayInput);
-var arrayOutput = arrayProblems.CanJump(arrayInput);
+var arrayOutput = arrayProblems.IsValidSudoku(arrayInput);
 Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
 /* Median of 2 sorted arrays */

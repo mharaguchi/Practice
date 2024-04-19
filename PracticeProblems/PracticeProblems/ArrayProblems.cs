@@ -156,5 +156,55 @@
             }
             return true;
         }
+
+        /* 36 - Valid Sudoku */
+        public bool IsValidSudoku(char[][] board)
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                var usedRow = new HashSet<char>();
+                var usedCol = new HashSet<char>();
+                for (int j = 0; j < 9; j++) {
+                    if (board[j][i] != '.') //check rows
+                    {
+                        if (usedRow.Contains(board[j][i]))
+                        {
+                            return false;
+                        }
+                        usedRow.Add(board[j][i]);
+                    }
+                    if (board[i][j] != '.') //check cols
+                    {
+                        if (usedCol.Contains(board[i][j]))
+                        {
+                            return false;
+                        }
+                        usedCol.Add(board[i][j]);
+                    }
+                }
+            }
+
+            for (int i = 0; i < 9; i++) //check squares
+            {
+                var used = new HashSet<char>();
+                var startX = (i % 3) * 3;
+                var startY = (i / 3) * 3;
+                for (int j = 0; j < 9; j++)
+                {
+                    var x = startX + (j % 3);
+                    var y = (j / 3) + startY;
+                    if (board[y][x] != '.')
+                    {
+                        if (used.Contains(board[y][x]))
+                        {
+                            return false;
+                        }
+                        used.Add(board[y][x]);
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }

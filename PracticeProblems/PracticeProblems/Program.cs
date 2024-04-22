@@ -22,7 +22,7 @@ Console.WriteLine("IntOutput: " + intOutput);
 var arrayProblems = new ArrayProblems();
 //var arrayInput = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
 //var arrayInput = new int[] { -1, 0, 1, 2, -1, -4 };
-//var arrayInput = new int[] { 0, 0, 0 };
+var arrayInput = new int[] { 0, 0, 0 };
 //var arrayInput = new int[] { 0, 1, 1 };
 //var arrayInput = new int[] { 1, 2, 3 };
 //var arrayInput = new List<IList<int>> { new List<int> { 2 }, new List<int> { 3, 4 }, new List<int> { 6, 5, 7 }, new List<int> { 4, 1, 8, 3 } };
@@ -45,10 +45,11 @@ var arrayProblems = new ArrayProblems();
 //var arrayInput = new int[] { 1, 2, 5 };
 //var arrayInput = new int[] { 2 };
 //var arrayInput = new int[] { 1 };
-var arrayInput = new int[] { 186, 419, 83, 408 };
+//var arrayInput = new int[] { 186, 419, 83, 408 };
+//var arrayInput = new int[] { -1, 2, 1, -4 };
 
 //var arrayOutput = arrayProblems.Permute(arrayInput);
-var arrayOutput = arrayProblems.CoinChange(arrayInput, 6249);
+var arrayOutput = arrayProblems.ThreeSumClosest(arrayInput, 1);
 Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
 /* Median of 2 sorted arrays */

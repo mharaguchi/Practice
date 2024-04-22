@@ -84,6 +84,47 @@ namespace PracticeProblems
             return matches;
         }
 
+        /* 16 - 3Sum Closest */
+        public int ThreeSumClosest(int[] nums, int target)
+        {
+            int closest = Int32.MaxValue;
+            Array.Sort(nums);
+
+            var current = 0;
+            int left, right;
+
+            while (current < nums.Length - 2)
+            {
+                left = current + 1;
+                right = nums.Length - 1;
+
+                while (left < right)
+                {
+                    var thisTotal = nums[left] + nums[current] + nums[right];
+                    if (thisTotal == target)
+                    {
+                        return target;
+                    }
+
+                    var diff = thisTotal - target;
+                    if (Math.Abs(diff) < Math.Abs(closest - target))
+                    {
+                        closest = thisTotal;
+                    }
+                    else if (diff < 0)
+                    {
+                        left++;
+                    }
+                    else
+                    {
+                        right--;
+                    }
+                }
+                current++;
+            }
+            return closest;
+        }
+
         /* 46 - Permutations */
         public IList<IList<int>> Permute(int[] nums)
         {

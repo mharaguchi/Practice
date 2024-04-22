@@ -31,21 +31,24 @@ var arrayProblems = new ArrayProblems();
 //var arrayInput = new int[] { 1, -1, -1, 0 };
 //var arrayInput = new int[] { 2, 3, 1, 1, 4 };
 //var arrayInput = new int[] { 3, 2, 1, 0, 4 };
-var arrayInput = new List<char[]> { 
-    new char[] { '5', '3', '.', '.', '7', '.', '.', '.', '.' }, 
-    new char[] { '6','.','.','1','9','5','.','.','.' }, 
-    new char[] { '.','9','8','.','.','.','.','6','.' },
-    new char[] { '8','.','.','.','6','.','.','.','3' },
-    new char[] { '4','.','.','8','.','3','.','.','1' },
-    new char[] { '7','.','.','.','2','.','.','.','6' },
-    new char[] { '.','6','.','.','.','.','2','8','.' },
-    new char[] { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
-    new char[] { '.','.','.','.','8','.','.','7','9' },
-}.ToArray();
-
+//var arrayInput = new List<char[]> { 
+//    new char[] { '5', '3', '.', '.', '7', '.', '.', '.', '.' }, 
+//    new char[] { '6','.','.','1','9','5','.','.','.' }, 
+//    new char[] { '.','9','8','.','.','.','.','6','.' },
+//    new char[] { '8','.','.','.','6','.','.','.','3' },
+//    new char[] { '4','.','.','8','.','3','.','.','1' },
+//    new char[] { '7','.','.','.','2','.','.','.','6' },
+//    new char[] { '.','6','.','.','.','.','2','8','.' },
+//    new char[] { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+//    new char[] { '.','.','.','.','8','.','.','7','9' },
+//}.ToArray();
+//var arrayInput = new int[] { 1, 2, 5 };
+//var arrayInput = new int[] { 2 };
+//var arrayInput = new int[] { 1 };
+var arrayInput = new int[] { 186, 419, 83, 408 };
 
 //var arrayOutput = arrayProblems.Permute(arrayInput);
-var arrayOutput = arrayProblems.IsValidSudoku(arrayInput);
+var arrayOutput = arrayProblems.CoinChange(arrayInput, 6249);
 Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
 /* Median of 2 sorted arrays */

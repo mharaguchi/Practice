@@ -1,4 +1,6 @@
-﻿namespace PracticeProblems
+﻿using System.Diagnostics.Metrics;
+
+namespace PracticeProblems
 {
     internal class ArrayProblems
     {
@@ -205,6 +207,69 @@
             }
 
             return true;
+        }
+
+        /* 322 - Coin Change */
+        //public int CoinChange(int[] coins, int amount)
+        //{
+        //    if (amount == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    Array.Sort(coins, (a, b) => b.CompareTo(a));
+        //    var result = BacktrackChange(coins, 0, 0, amount, Int32.MaxValue);
+        //    return result < Int32.MaxValue ? result : -1;
+        //}
+
+        //public int BacktrackChange(int[] sortedCoins, int numCoins, int index, int target, int currentLow)
+        //{
+        //    var low = currentLow;
+        //    for(int i = target / sortedCoins[index]; i >= 0; i--)
+        //    {
+        //        var newNumCoins = numCoins + i;
+        //        var diff = target - sortedCoins[index] * i;
+        //        if (diff == 0)
+        //        {
+        //            return newNumCoins;
+        //        }
+        //        else
+        //        {
+        //            if (index + 1 < sortedCoins.Length)
+        //            {
+        //                var result = BacktrackChange(sortedCoins, newNumCoins, index + 1, diff, low);
+        //                if (result < low)
+        //                {
+        //                    low = result;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return low;
+        //}
+
+        public int CoinChange(int[] coins, int amount)
+        {
+            var minCoins = new int[amount + 1];
+            Array.Fill<int>(minCoins, Int32.MaxValue);
+            minCoins[0] = 0;
+
+            for(int i = 0; i <= amount; i++)
+            {
+                for (int j = 0; j < coins.Length; j++)
+                {
+                    var currentMin = minCoins[i]; //Could be previous coin's minimum
+                    var previousDPIndex = i - coins[j];
+                    if (previousDPIndex < 0)
+                    {
+                        continue;
+                    }
+                    if (minCoins[previousDPIndex] == Int32.MaxValue) { continue; }
+                    var thisCoinMin = minCoins[i - coins[j]] + 1;
+                    minCoins[i] = currentMin < thisCoinMin ? currentMin : thisCoinMin;
+                }
+            }
+
+            return minCoins[amount] == Int32.MaxValue ? -1 : minCoins[amount];
         }
     }
 }

@@ -1,16 +1,5 @@
 ﻿namespace PracticeProblems
 {
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     internal class LeetAddTwoNumbers_2
     {
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)

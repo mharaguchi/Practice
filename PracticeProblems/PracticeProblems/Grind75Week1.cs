@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace PracticeProblems
 {
-    internal class GrindProblems
+    internal class Grind75Week1
     {
         /* 21 - Merge Two Sorted Lists */
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
@@ -168,6 +168,50 @@ namespace PracticeProblems
                 InvertTree(root.right);
             }
             return root;
+        }
+
+        /* 242 - Valid Anagram */
+        public bool IsAnagram(string s, string t)
+        {
+            var sCount = new Dictionary<char, int>();
+            var tCount = new Dictionary<char, int>();
+            if (s.Length != t.Length)
+            {
+                return false;
+            }
+
+            for(int i = 0; i < s.Length; i++)
+            {
+                if (sCount.ContainsKey(s[i]))
+                {
+                    sCount[s[i]] = sCount[s[i]] + 1;
+                }
+                else
+                {
+                    sCount[s[i]] = 1;
+                }
+                if (tCount.ContainsKey(t[i]))
+                {
+                    tCount[t[i]] = tCount[t[i]] + 1;
+                }
+                else
+                {
+                    tCount[t[i]] = 1;
+                }
+            }
+            foreach(var sCountKvp in sCount)
+            {
+                if (!tCount.ContainsKey(sCountKvp.Key))
+                {
+                    return false;
+                }
+                if (sCountKvp.Value != tCount[sCountKvp.Key])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

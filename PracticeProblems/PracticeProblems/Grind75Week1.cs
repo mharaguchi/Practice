@@ -335,5 +335,23 @@ namespace PracticeProblems
 
             return image;
         }
+
+        /* 235 - Lowest Common Ancestor of BST */
+        public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        {
+            var current = root;
+            while ((p.val < current.val && q.val < current.val) || (p.val > current.val && q.val > current.val)){
+                if (p.val < current.val)
+                {
+                    current = current.left;
+                }
+                else
+                {
+                    current = current.right;
+                }
+            }
+
+            return current;
+        }
     }
 }

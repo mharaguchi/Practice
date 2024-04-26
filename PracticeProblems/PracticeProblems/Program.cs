@@ -52,8 +52,10 @@ using PracticeProblems;
 //var arrayOutput = arrayProblems.ThreeSumClosest(arrayInput, 1);
 //Console.WriteLine("ArrayOutput: " + arrayOutput.ToString());
 
-var grindProblems = new GrindProblems();
-grindProblems.Run();
+var grindInput = new int[][] { new int[] { 1, 1, 1 }, new int[] { 1, 1, 0 }, new int[] { 1, 0, 1 } };
+var grindProblems = new Grind75Week1();
+var grindOutput = grindProblems.FloodFill(grindInput, 1, 1, 2);
+Console.WriteLine();
 
 /* Median of 2 sorted arrays */
 //var leet = new LeetMedianOfTwoSortedArrays_4();

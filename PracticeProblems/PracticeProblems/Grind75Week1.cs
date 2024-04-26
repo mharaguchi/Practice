@@ -103,7 +103,7 @@ namespace PracticeProblems
             var lowerString = s.ToLower();
             var cleanStringBuilder = new StringBuilder();
 
-            for(int i = 0; i < lowerString.Length; i++)
+            for (int i = 0; i < lowerString.Length; i++)
             {
                 if ((lowerString[i] >= 48 && lowerString[i] <= 57) || (lowerString[i] >= 97 && lowerString[i] <= 122))
                 {
@@ -181,7 +181,7 @@ namespace PracticeProblems
                 return false;
             }
 
-            for(int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
                 if (sCount.ContainsKey(s[i]))
                 {
@@ -200,7 +200,7 @@ namespace PracticeProblems
                     tCount[t[i]] = 1;
                 }
             }
-            foreach(var sCountKvp in sCount)
+            foreach (var sCountKvp in sCount)
             {
                 if (!tCount.ContainsKey(sCountKvp.Key))
                 {
@@ -253,6 +253,87 @@ namespace PracticeProblems
                 return end;
             }
             return -1;
+        }
+
+        /* 733 - Flood Fill */
+        public int[][] FloodFill(int[][] image, int sr, int sc, int color)
+        {
+            var squareStack = new Stack<(int, int)>();
+            squareStack.Push((sr, sc));
+
+            var traversed = new HashSet<(int, int)>
+        {
+            (sr, sc)
+        };
+
+            var changeList = new List<(int, int)>();
+            var matchColor = image[sr][sc];
+
+            while (squareStack.Count > 0)
+            {
+                var thisSquare = squareStack.Pop();
+                if (image[thisSquare.Item1][thisSquare.Item2] == matchColor)
+                {
+                    changeList.Add(thisSquare);
+                }
+
+                //Add squares to stack
+                if (thisSquare.Item1 - 1 >= 0)
+                {
+                    var leftSquare = (thisSquare.Item1 - 1, thisSquare.Item2);
+                    if (!traversed.Contains(leftSquare)) //left
+                    {
+                        if (image[leftSquare.Item1][leftSquare.Item2] == matchColor)
+                        {
+                            squareStack.Push(leftSquare);
+                        }
+                        traversed.Add(leftSquare);
+                    }
+                }
+                if (thisSquare.Item1 + 1 < image.Length)
+                {
+                    var rightSquare = (thisSquare.Item1 + 1, thisSquare.Item2);
+                    if (!traversed.Contains(rightSquare)) //right
+                    {
+                        if (image[rightSquare.Item1][rightSquare.Item2] == matchColor)
+                        {
+                            squareStack.Push(rightSquare);
+                        }
+                        traversed.Add(rightSquare);
+                    }
+                }
+                if (thisSquare.Item2 - 1 >= 0)
+                {
+                    var upSquare = (thisSquare.Item1, thisSquare.Item2 - 1);
+                    if (!traversed.Contains(upSquare)) //up
+                    {
+                        if (image[upSquare.Item1][upSquare.Item2] == matchColor)
+                        {
+                            squareStack.Push(upSquare);
+                        }
+                        traversed.Add(upSquare);
+                    }
+                }
+                if (thisSquare.Item2 + 1 < image[0].Length)
+                {
+                    var downSquare = (thisSquare.Item1, thisSquare.Item2 + 1);
+                    if (!traversed.Contains(downSquare)) //down
+                    {
+                        if (image[downSquare.Item1][downSquare.Item2] == matchColor)
+                        {
+                            squareStack.Push(downSquare);
+                        }
+                        traversed.Add(downSquare);
+                    }
+                }
+            }
+
+            foreach (var square in changeList)
+            {
+                image[square.Item1][square.Item2] = color;
+            }
+
+            return image;
         }
     }
 }

@@ -353,5 +353,60 @@ namespace PracticeProblems
 
             return current;
         }
+
+        /* 110 - Balanced Binary Tree */
+        //public bool IsBalanced(TreeNode root)
+        //{
+        //    if (Math.Abs(GetDepth(root.left, 0) - GetDepth(root.right, 1)) > 0)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
+
+        //public int GetDepth(TreeNode node, int currentDepth)
+        //{
+        //    var newDepth = currentDepth + 1;
+        //    if (node.left == null && node.right == null)
+        //    {
+        //        return newDepth;
+        //    }
+        //    if (node.left == null && node.right != null)
+        //    {
+        //        return GetDepth(node.right, newDepth);
+        //    }
+        //    if (node.left != null && node.right == null)
+        //    {
+
+        //    }
+        //    if (Math.Abs(GetDepth(node.left, newDepth) - GetDepth(node.right, newDepth)) > 1)
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        /* 141 - Linked List Cycle */
+        public bool HasCycle(ListNode head)
+        {
+            if (head == null || head.next == null)
+            {
+                return false;
+            }
+
+            var visited = new HashSet<ListNode>();
+            var currentNode = head;
+
+            while (!visited.Contains(currentNode) && currentNode.next != null)
+            {
+                visited.Add(currentNode);
+                currentNode = currentNode.next;
+            }
+
+            if (visited.Contains(currentNode))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

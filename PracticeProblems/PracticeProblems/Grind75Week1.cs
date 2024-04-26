@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Security.AccessControl;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -212,6 +213,46 @@ namespace PracticeProblems
             }
 
             return true;
+        }
+
+        /* 704 - Binary Search */
+        public int Search(int[] nums, int target)
+        {
+            if (nums.Length == 0)
+            {
+                return -1;
+            }
+
+            var start = 0;
+            var end = nums.Length - 1;
+
+            while (end - start > 1)
+            {
+                var tracker = (end + start) / 2;
+                if (nums[tracker] == target)
+                {
+                    return tracker;
+                }
+                if (nums[tracker] < target)
+                {
+                    start = tracker + 1;
+                    continue;
+                }
+                if (nums[tracker] > target)
+                {
+                    end = tracker - 1;
+                    continue;
+                }
+            }
+            if (nums[start] == target)
+            {
+                return start;
+            }
+            if (nums[end] == target)
+            {
+                return end;
+            }
+            return -1;
         }
     }
 }

@@ -77,5 +77,75 @@ namespace PracticeProblems
             }
             return current;
         }
+
+        /* 409 - Longest Palindrome */
+        public int LongestPalindrome(string s)
+        {
+            Dictionary<char, int> characterOccurrences = new Dictionary<char, int>();
+
+            for(int i = 0; i < s.Length; i++)
+            {
+                if (!characterOccurrences.ContainsKey(s[i]))
+                {
+                    characterOccurrences[s[i]] = 1;
+                }
+                else
+                {
+                    characterOccurrences[s[i]]++;
+                }
+            }
+            var doubles = 0;
+            var extra = false;
+            foreach(var kvp in characterOccurrences)
+            {
+                doubles += kvp.Value / 2;
+                if (!extra && kvp.Value % 2 > 0)
+                {
+                    extra = true;
+                }
+            }
+            return extra ? doubles * 2 + 1 : doubles * 2;
+        }
+
+        /* 206 - Reverse Linked List */
+        public ListNode ReverseList(ListNode head)
+        {
+            if (head is null)
+            {
+                return null;
+            }
+            var prev = head;
+            var current = head.next;
+            head.next = null;
+
+            while (current != null)
+            {
+                var temp = current.next;
+                current.next = prev;
+                prev = current;
+                current = temp;
+            }
+
+            return prev;
+        }
+
+        /* 169 - Majority Element */
+        public int MajorityElement(int[] nums)
+        {
+            Dictionary<int, int> occurrences = new Dictionary<int, int>();
+            foreach (int num in nums)
+            {
+                if (occurrences.ContainsKey(num))
+                {
+                    occurrences[num]++;
+                }
+                else
+                {
+                    occurrences[num] = 1;
+                }
+            }
+
+            return occurrences.MaxBy(x => x.Value).Key;
+        }
     }
 }

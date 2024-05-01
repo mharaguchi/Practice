@@ -29,4 +29,52 @@ namespace PracticeProblems
             this.right = right;
         }
     }
+
+    public class MyQueue
+    {
+        readonly Stack<int> stack1 = new Stack<int>();
+        readonly Stack<int> stack2 = new Stack<int>();
+
+        public MyQueue()
+        {
+
+        }
+
+        public void Push(int x)
+        {
+            if (stack1.Count == 0)
+            {
+                stack1.Push(x);
+            }
+            else
+            {
+                while (stack1.Count > 0)
+                {
+                    var num = stack1.Pop();
+                    stack2.Push(num);
+                }
+                stack1.Push(x);
+                while (stack2.Count > 0)
+                {
+                    var num = stack2.Pop();
+                    stack1.Push(num);
+                }
+            }
+        }
+
+        public int Pop()
+        {
+            return stack1.Pop();
+        }
+
+        public int Peek()
+        {
+            return stack1.Peek();
+        }
+
+        public bool Empty()
+        {
+            return !stack1.Any();
+        }
+    }
 }

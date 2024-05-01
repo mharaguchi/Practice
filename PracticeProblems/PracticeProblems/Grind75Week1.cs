@@ -355,35 +355,29 @@ namespace PracticeProblems
         }
 
         /* 110 - Balanced Binary Tree */
-        //public bool IsBalanced(TreeNode root)
-        //{
-        //    if (Math.Abs(GetDepth(root.left, 0) - GetDepth(root.right, 1)) > 0)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public bool IsBalanced(TreeNode root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            if (Math.Abs(GetHeight(root.left) - GetHeight(root.right)) > 1 || !IsBalanced(root.left) || !IsBalanced(root.right))
+            {
+                return false;
+            }
+            return true;
+        }
 
-        //public int GetDepth(TreeNode node, int currentDepth)
-        //{
-        //    var newDepth = currentDepth + 1;
-        //    if (node.left == null && node.right == null)
-        //    {
-        //        return newDepth;
-        //    }
-        //    if (node.left == null && node.right != null)
-        //    {
-        //        return GetDepth(node.right, newDepth);
-        //    }
-        //    if (node.left != null && node.right == null)
-        //    {
-
-        //    }
-        //    if (Math.Abs(GetDepth(node.left, newDepth) - GetDepth(node.right, newDepth)) > 1)
-        //    {
-        //        return false;
-        //    }
-        //}
+        public int GetHeight(TreeNode node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            int left = 1 + GetHeight(node.left);
+            int right = 1 + GetHeight(node.right);
+            return Math.Max(left, right);
+        }
 
         /* 141 - Linked List Cycle */
         public bool HasCycle(ListNode head)
@@ -408,5 +402,9 @@ namespace PracticeProblems
             }
             return false;
         }
+
+        /* 232 - Queue Using Stacks */
+        /* Implementation is in SharedClasses file */
+
     }
 }

@@ -147,5 +147,38 @@ namespace PracticeProblems
 
             return occurrences.MaxBy(x => x.Value).Key;
         }
+
+        /* 67 - Add Binary */
+        public string AddBinary(string a, string b)
+        {
+            var aRev = a.Reverse().ToArray();
+            var bRev = b.Reverse().ToArray();
+            var max = Math.Max(aRev.Length, bRev.Length);
+            var sb = new StringBuilder();
+            var carry = 0;
+        
+            for(int i = 0; i < max; i++)
+            {
+                var aVal = 0;
+                var bVal = 0;
+                if (aRev.Length > i)
+                {
+                    aVal = Int32.Parse(aRev[i].ToString());
+                }
+                if (bRev.Length > i)
+                {
+                    bVal = Int32.Parse(bRev[i].ToString());
+                }
+                var thisVal = (aVal + bVal + carry) % 2;
+                carry = (aVal + bVal + carry) / 2;
+                sb.Append(thisVal);
+            }
+            if (carry == 1)
+            {
+                sb.Append('1');
+            }
+            var resultStr = new string(sb.ToString().Reverse().ToArray());
+            return resultStr;
+        }
     }
 }

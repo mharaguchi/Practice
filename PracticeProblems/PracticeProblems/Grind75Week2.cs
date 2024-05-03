@@ -180,5 +180,123 @@ namespace PracticeProblems
             var resultStr = new string(sb.ToString().Reverse().ToArray());
             return resultStr;
         }
+
+        /* 543 - Diameter of Binary Tree */
+        private int diameter = 0;
+
+        public int DiameterOfBinaryTree(TreeNode root)
+        {
+            GetDiameterHeight(root);
+            return diameter - 2;
+        }
+
+        public int GetDiameterHeight(TreeNode node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            int left = 1 + GetDiameterHeight(node.left);
+            int right = 1 + GetDiameterHeight(node.right);
+            if (left + right > diameter)
+            {
+                diameter = left + right;
+            }
+            return Math.Max(left, right);
+        }
+
+        /* 876 - Middle of the Linked List */
+        public ListNode MiddleNode(ListNode head)
+        {
+            var slowTracker = head;
+            var fastTracker = head;
+            var length = 0;
+
+            while (fastTracker.next != null && fastTracker.next.next != null)
+            {
+                length++;
+                slowTracker = slowTracker.next;
+                fastTracker = fastTracker.next.next;
+            }
+            if (fastTracker.next != null)
+            {
+                slowTracker = slowTracker.next;
+            }
+
+            return slowTracker;
+        }
+
+        /* 104 - Maximum Depth of Binary Tree */
+        public int MaxDepth(TreeNode node)
+        {
+            return GetHeight(node);
+        }
+
+        public int GetHeight(TreeNode node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            var left = 1 + GetHeight(node.left);
+            var right = 1 + GetHeight(node.right);
+            return Math.Max(left, right);
+        }
+
+        /* 217 - Contains Duplicate */
+        public bool ContainsDuplicate(int[] nums)
+        {
+            var matches = new HashSet<int>();
+
+            foreach (int num in nums)
+            {
+                if (!matches.Contains(num))
+                {
+                    matches.Add(num);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /* 53 - Maximum Subarray */
+        public int MaxSubArray(int[] nums)
+        {
+            var maxSum = -1;
+            var currentSum = 0;
+
+            for(int i = 0; i <  nums.Length; i++)
+            {
+                if (nums[i] > 0){
+                    currentSum += nums[i];
+                    if (currentSum > maxSum)
+                    {
+                        maxSum = currentSum;
+                    }
+                }
+                else
+                {
+                    if (currentSum + nums[i] <= 0)
+                    {
+                        currentSum = 0;
+                    }
+                    else
+                    {
+                        currentSum += nums[i];
+                    }
+                }
+            }
+
+            if (maxSum == -1)
+            {
+                maxSum = nums.Max();
+            }
+
+            return maxSum;
+        }
     }
 }
